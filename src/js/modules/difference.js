@@ -20,6 +20,7 @@ export default class Defference {
             }
         });
     }
+    
     hideItems(card) {
         card.forEach((item, i, arr) => {
             if (i !== arr.length - 1) {
