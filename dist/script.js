@@ -133,6 +133,19 @@ const slider = (slidesSelector, btnsSelector) => {
     if (n > slides.length - 1) {
       index = 0;
     }
+    try {
+      const hanson = document.querySelector('.hanson');
+      hanson.style.opacity = '0';
+      if (index == 2) {
+        setTimeout(() => {
+          hanson.style.opacity = '1';
+          hanson.classList.add('animated', 'slideInUp');
+        }, 3000);
+      } else {
+        // hanson.style.opacity = '0';
+        hanson.classList.remove('animated', 'slideInUp');
+      }
+    } catch (e) {}
     slides.forEach(slide => slide.style.display = 'none');
     slides[index].style.display = 'block';
   }
