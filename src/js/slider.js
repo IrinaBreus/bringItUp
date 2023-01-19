@@ -23,9 +23,26 @@ export default class Slider {
     }
 
     render() {
+        try {
+            this.hanson = document.querySelector('.hanson');
+            this.hanson.style.opacity = '0';   
+        } catch (e) {}
+
         this.btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 this.plusSlide(1);
+
+                try {
+                    if (this.index === 2) {
+                        setTimeout(() => {
+                            this.hanson.style.opacity = '1';
+                            this.hanson.classList.add('animated', 'slideInUp');
+                        }, 3000);
+                    } else {
+                        this.hanson.style.opacity = '0';
+                        this.hanson.classList.remove('animated', 'slideInUp');
+                    }
+                } catch (e) {}
             });
 
             btn.parentNode.previousElementSibling.addEventListener('click', (e) => {
