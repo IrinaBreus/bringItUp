@@ -90,10 +90,62 @@
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
 
+window.addEventListener('DOMContentLoaded', () => {
+  const slider = new _slider__WEBPACK_IMPORTED_MODULE_0__["default"]('.page > div', '.next');
+  slider.render();
+});
+
+/***/ }),
+
+/***/ "./src/js/slider.js":
+/*!**************************!*\
+  !*** ./src/js/slider.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Slider; });
+class Slider {
+  constructor(slides, btns) {
+    this.slides = document.querySelectorAll(slides);
+    this.btns = document.querySelectorAll(btns);
+    this.index = 0;
+  }
+  showSlides(n) {
+    if (n > this.slides.length - 1) {
+      this.index = 0;
+    }
+    if (n < 0) {
+      this.index = this.slides.length - 1;
+    }
+    this.slides.forEach(slide => slide.style.display = 'none');
+    this.slides[this.index].style.display = '';
+  }
+  plusSlide(n) {
+    this.showSlides(this.index += n);
+  }
+  render() {
+    this.btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.plusSlide(1);
+      });
+      btn.parentNode.previousElementSibling.addEventListener('click', e => {
+        e.preventDefault();
+        this.index = 0;
+        this.showSlides(this.index);
+      });
+    });
+  }
+}
 
 /***/ })
 
