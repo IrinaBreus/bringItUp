@@ -4,13 +4,15 @@ const slider = (slidesSelector, btnsSelector) => {
 
 	let index = 0;
 
-	showSlides(index);
-	
 	btns.forEach(btn => {
-		btn.addEventListener('click', (e) => {
-			e.preventDefault();
-			
+		btn.addEventListener('click', () => {
 			plusSlide(1);
+		});
+
+		btn.parentNode.previousElementSibling.addEventListener('click', (e) => {
+			e.preventDefault();
+			index = 0;
+			showSlides(index);
 		})
 	})
 	
