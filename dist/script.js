@@ -169,9 +169,9 @@ const slider = (slidesSelector, btnsSelector) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const videoPlayer = () => {
-  const btns = document.querySelectorAll('.play'),
-    overlay = document.querySelector('.overlay'),
+const videoPlayer = (triggers, overlaySelector) => {
+  const btns = document.querySelectorAll(triggers),
+    overlay = document.querySelector(overlaySelector),
     close = overlay.querySelector('.close');
   let player;
   const tag = document.createElement('script');
