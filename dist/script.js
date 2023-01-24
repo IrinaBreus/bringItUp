@@ -96,9 +96,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ "./src/js/videoPlayer.js");
+
 
 window.addEventListener('DOMContentLoaded', () => {
   Object(_slider__WEBPACK_IMPORTED_MODULE_0__["default"])('.page > div', '.next');
+  Object(_videoPlayer__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 
 /***/ }),
@@ -154,6 +157,51 @@ const slider = (slidesSelector, btnsSelector) => {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (slider);
+
+/***/ }),
+
+/***/ "./src/js/videoPlayer.js":
+/*!*******************************!*\
+  !*** ./src/js/videoPlayer.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const videoPlayer = () => {
+  const btns = document.querySelectorAll('.play'),
+    overlay = document.querySelector('.overlay'),
+    close = overlay.querySelector('.close');
+  let player;
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  function onYouTubeIframeAPIReady(url) {
+    player = new YT.Player('frame', {
+      height: '100%',
+      width: '100%',
+      videoId: url
+    });
+    overlay.style.display = 'flex';
+  }
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (document.querySelector('iframe#frame')) {
+        overlay.style.display = 'flex';
+      } else {
+        const path = btn.dataset.url;
+        onYouTubeIframeAPIReady(path);
+      }
+    });
+  });
+  close.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    player.stopVideo();
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (videoPlayer);
 
 /***/ })
 
