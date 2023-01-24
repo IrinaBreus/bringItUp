@@ -95,21 +95,21 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
-/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ "./src/js/videoPlayer.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/videoPlayer */ "./src/js/modules/videoPlayer.js");
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  Object(_slider__WEBPACK_IMPORTED_MODULE_0__["default"])('.page > div', '.next');
-  Object(_videoPlayer__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_0__["default"])('.page > div', '.next');
+  Object(_modules_videoPlayer__WEBPACK_IMPORTED_MODULE_1__["default"])('.play', '.overlay');
 });
 
 /***/ }),
 
-/***/ "./src/js/slider.js":
-/*!**************************!*\
-  !*** ./src/js/slider.js ***!
-  \**************************/
+/***/ "./src/js/modules/slider.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/slider.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -160,10 +160,10 @@ const slider = (slidesSelector, btnsSelector) => {
 
 /***/ }),
 
-/***/ "./src/js/videoPlayer.js":
-/*!*******************************!*\
-  !*** ./src/js/videoPlayer.js ***!
-  \*******************************/
+/***/ "./src/js/modules/videoPlayer.js":
+/*!***************************************!*\
+  !*** ./src/js/modules/videoPlayer.js ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
