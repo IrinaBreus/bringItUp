@@ -1,21 +1,21 @@
 import Slider from "./slider"
 
 export default class MainSlider extends Slider {
-    constructor(page, btns) {
-        super(page, btns);
+    constructor(btns) {
+        super(btns);
     }
 
     showSlides(n) {
-        if (n > this.page.length - 1) {
+        if (n > [...this.slides].length - 1) {
             this.index = 0;
         }
 
         if (n < 0) {
-            this.index = this.page.length - 1;
+            this.index = [...this.slides].length - 1;
         }
 
-        this.page.forEach(slide => slide.style.display = 'none');
-        this.page[this.index].style.display = '';
+        [...this.slides].forEach(slide => slide.style.display = 'none');
+        [...this.slides][this.index].style.display = '';
     }
 
     plusSlide(n) {
