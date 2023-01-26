@@ -95,68 +95,86 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
-/* harmony import */ var _modules_videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/videoPlayer */ "./src/js/modules/videoPlayer.js");
+/* harmony import */ var _modules_slider_mainSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/slider/mainSlider */ "./src/js/modules/slider/mainSlider.js");
+/* harmony import */ var _modules_slider_miniSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider/miniSlider */ "./src/js/modules/slider/miniSlider.js");
+/* harmony import */ var _modules_slider_miniSlider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_slider_miniSlider__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_videoPlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/videoPlayer */ "./src/js/modules/videoPlayer.js");
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_0__["default"])('.page > div', '.next');
-  Object(_modules_videoPlayer__WEBPACK_IMPORTED_MODULE_1__["default"])('.play', '.overlay');
+  Object(_modules_slider_mainSlider__WEBPACK_IMPORTED_MODULE_0__["default"])('.page > div', '.next');
+  Object(_modules_videoPlayer__WEBPACK_IMPORTED_MODULE_2__["default"])('.play', '.overlay');
 });
 
 /***/ }),
 
-/***/ "./src/js/modules/slider.js":
-/*!**********************************!*\
-  !*** ./src/js/modules/slider.js ***!
-  \**********************************/
+/***/ "./src/js/modules/slider/mainSlider.js":
+/*!*********************************************!*\
+  !*** ./src/js/modules/slider/mainSlider.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const slider = (slidesSelector, btnsSelector) => {
+const mainSlider = function (slidesSelector) {
+  let nextSelector = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  let prev = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   const slides = document.querySelectorAll(slidesSelector),
-    btns = document.querySelectorAll(btnsSelector);
+    next = document.querySelectorAll(nextSelector);
   let index = 0;
-  btns.forEach(btn => {
+  next.forEach(btn => {
     btn.addEventListener('click', () => {
-      plusSlide(1);
+      moveSlides(1);
     });
-    btn.parentNode.previousElementSibling.addEventListener('click', e => {
+    btn.parentElement.previousElementSibling.addEventListener('click', e => {
       e.preventDefault();
       index = 0;
-      showSlides(index);
+      slides[0].style.display = 'flex';
     });
   });
   function showSlides(n) {
-    if (n < 0) {
+    if (n == 0) {
       index = slides.length - 1;
     }
-    if (n > slides.length - 1) {
+    ;
+    if (n == slides.length - 1) {
       index = 0;
     }
+    ;
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[index].style.display = 'flex';
     try {
       const hanson = document.querySelector('.hanson');
       hanson.style.opacity = '0';
-      if (index == 2) {
+      if (index === 2) {
         setTimeout(() => {
-          hanson.style.opacity = '1';
           hanson.classList.add('animated', 'slideInUp');
+          hanson.style.opacity = '1';
         }, 3000);
       } else {
-        // hanson.style.opacity = '0';
-        hanson.classList.remove('animated', 'slideInUp');
+        hanson.style.opacity = '0';
+        hanson.classList.remove('slideInUp');
       }
     } catch (e) {}
-    slides.forEach(slide => slide.style.display = 'none');
-    slides[index].style.display = 'block';
   }
-  function plusSlide(n) {
+  function moveSlides(n) {
     showSlides(index += n);
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (slider);
+/* harmony default export */ __webpack_exports__["default"] = (mainSlider);
+
+/***/ }),
+
+/***/ "./src/js/modules/slider/miniSlider.js":
+/*!*********************************************!*\
+  !*** ./src/js/modules/slider/miniSlider.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

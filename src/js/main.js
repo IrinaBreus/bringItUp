@@ -1,9 +1,11 @@
-import slider from "./modules/slider";
+import mainSlider from "./modules/slider/mainSlider";
+import miniSlider from "./modules/slider/miniSlider";
 import videoPlayer from "./modules/videoPlayer";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    slider('.page > div', '.next');
+    mainSlider('.page > div','.next');
 
+    
     videoPlayer('.play', '.overlay');
 });
