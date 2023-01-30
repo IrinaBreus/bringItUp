@@ -95,19 +95,21 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_playVideo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/playVideo */ "./src/js/modules/playVideo.js");
-/* harmony import */ var _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider/slider-main */ "./src/js/modules/slider/slider-main.js");
-/* harmony import */ var _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider/slider-mini */ "./src/js/modules/slider/slider-mini.js");
+/* harmony import */ var _modules_difference__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/difference */ "./src/js/modules/difference.js");
+/* harmony import */ var _modules_playVideo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/playVideo */ "./src/js/modules/playVideo.js");
+/* harmony import */ var _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider/slider-main */ "./src/js/modules/slider/slider-main.js");
+/* harmony import */ var _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/slider/slider-mini */ "./src/js/modules/slider/slider-mini.js");
+
 
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  const slider = new _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  const slider = new _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_2__["default"]({
     container: '.page',
     btns: '.next'
   });
   slider.render();
-  const showupSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__["default"]({
+  const showupSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_3__["default"]({
     container: '.showup__content-slider',
     prev: '.showup__prev',
     next: '.showup__next',
@@ -115,7 +117,7 @@ window.addEventListener('DOMContentLoaded', () => {
     animate: true
   });
   showupSlider.init();
-  const modulesSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__["default"]({
+  const modulesSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_3__["default"]({
     container: '.modules__content-slider',
     prev: '.modules__info .slick-prev',
     next: '.modules__info .slick-next',
@@ -124,16 +126,65 @@ window.addEventListener('DOMContentLoaded', () => {
     autoplay: true
   });
   modulesSlider.init();
-  const feedSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__["default"]({
+  const feedSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_3__["default"]({
     container: '.feed__slider-container',
     prev: '.feed .slick-prev',
     next: '.feed .slick-next',
     activeClass: 'feed__item-active'
   });
   feedSlider.init();
-  const player = new _modules_playVideo__WEBPACK_IMPORTED_MODULE_0__["default"]('.showup .play', '.overlay');
+  new _modules_difference__WEBPACK_IMPORTED_MODULE_0__["default"]('.officerold', '.officernew', '.officer__card-item').init();
+  const player = new _modules_playVideo__WEBPACK_IMPORTED_MODULE_1__["default"]('.showup .play', '.overlay');
   player.play();
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/difference.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/difference.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Difference; });
+class Difference {
+  constructor(oldOfficer, newOfficer, items) {
+    this.oldOfficer = document.querySelector(oldOfficer);
+    this.newOfficer = document.querySelector(newOfficer);
+    this.oldItems = this.oldOfficer.querySelectorAll(items);
+    this.newItems = this.newOfficer.querySelectorAll(items);
+    this.oldCounter = 0;
+    this.newCounter = 0;
+  }
+  hideItems(items) {
+    items.forEach((item, i) => {
+      if (i !== items.length - 1) {
+        item.classList.add('animated', 'fadeInDown');
+        item.style.display = 'none';
+      }
+      ;
+    });
+  }
+  bringItems(container, items, counter) {
+    container.lastElementChild.addEventListener('click', () => {
+      items[counter].style.display = '';
+      counter++;
+      if (counter == items.length - 1) {
+        items[counter].remove();
+      }
+      ;
+    });
+  }
+  init() {
+    this.hideItems(this.oldItems);
+    this.hideItems(this.newItems);
+    this.bringItems(this.oldOfficer, this.oldItems, this.oldCounter);
+    this.bringItems(this.newOfficer, this.newItems, this.newCounter);
+  }
+}
 
 /***/ }),
 
