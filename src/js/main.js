@@ -1,3 +1,4 @@
+import difference from "./modules/difference";
 import mainSlider from "./modules/slider/mainSlider";
 import miniSlider from "./modules/slider/miniSlider";
 import videoPlayer from "./modules/videoPlayer";
@@ -20,7 +21,10 @@ window.addEventListener('DOMContentLoaded', () => {
     miniSlider({containerSelect: '.feed__slider', 
                 nextSelect: '.feed__slider .slick-next', 
                 prevSelect:'.feed__slider .slick-prev',
-                activeClass: 'feed__item-active'})
+                activeClass: 'feed__item-active'});
+
+    difference('.officerold');
+    difference('.officernew');
 
     videoPlayer('.play', '.overlay');
 });
