@@ -1,6 +1,6 @@
 export default class Form {
     constructor (forms) {
-        this.forms = document.querySelectorAll('form');
+        this.forms = document.querySelectorAll(forms);
         this.message = {
             loading: 'Загрузка...',
             success: 'Спасибо! Мы скоро с Вами свяжемся',
@@ -84,7 +84,7 @@ export default class Form {
     init() {
         this.checkMailInputs();
         this.mask();
-        
+
         this.forms.forEach(form => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
