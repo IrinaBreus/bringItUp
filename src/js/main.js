@@ -1,4 +1,5 @@
 import difference from "./modules/difference";
+import form from "./modules/form";
 import mainSlider from "./modules/slider/mainSlider";
 import miniSlider from "./modules/slider/miniSlider";
 import videoPlayer from "./modules/videoPlayer";
@@ -27,4 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
     difference('.officernew');
 
     videoPlayer('.play', '.overlay');
+
+    form();
 });

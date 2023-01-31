@@ -23,7 +23,7 @@ const mainSlider = (slidesSelector, nextSelector = null, prev = null) => {
             index = slides.length - 1;
         };
 
-        if (n == slides.length - 1) {
+        if (n == slides.length) {
             index = 0;
         };
 
