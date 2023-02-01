@@ -1,27 +1,30 @@
 const difference = (parentSelector) => {
-    const parent = document.querySelector(parentSelector),
-          title = parent.firstElementChild,
-          trigger = parent.lastElementChild,
-          blocks = [...parent.children];
+    const parent = document.querySelector(parentSelector);
 
-    let index = 1;
+    try {
+        const title = parent.firstElementChild,
+        trigger = parent.lastElementChild,
+        blocks = [...parent.children];
 
-    blocks.forEach(item => {
-        
-        item.style.display = 'none';
-        item.classList.add('animated', 'fadeInDown');
-        title.style.display = '';
-        trigger.style.display = '';
-    });
+        let index = 1;
 
-    trigger.addEventListener('click', () => {
-        blocks[index].style.display = '';
-        index++;
+        blocks.forEach(item => {
+            
+            item.style.display = 'none';
+            item.classList.add('animated', 'fadeInDown');
+            title.style.display = '';
+            trigger.style.display = '';
+        });
 
-        if (index === blocks.length - 1) {
-            trigger.remove();
-        };
-    })
+        trigger.addEventListener('click', () => {
+            blocks[index].style.display = '';
+            index++;
+
+            if (index === blocks.length - 1) {
+                trigger.remove();
+            };
+        });
+    } catch (error) {}
 }
 
 export default difference;

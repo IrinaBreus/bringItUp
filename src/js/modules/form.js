@@ -24,6 +24,7 @@ const form = () => {
     
     
     forms.forEach(f => {
+        // 
         // const btn = f.querySelector('.btn'),
         //       inputs = f.querySelectorAll('input'),
         //       name = f.querySelector('[name="name"]'),

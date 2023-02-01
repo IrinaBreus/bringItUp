@@ -6,7 +6,8 @@ import videoPlayer from "./modules/videoPlayer";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    mainSlider('.page > div','.next');
+    mainSlider('.page > div','.page .next');
+    mainSlider('.moduleapp > div', '.moduleapp .next', '.moduleapp .prev');
 
     miniSlider({containerSelect: '.showup__content-slider', 
                 nextSelect: '.showup__next', 
