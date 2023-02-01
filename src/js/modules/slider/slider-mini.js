@@ -1,8 +1,13 @@
-import Slider from "./slider";
+export default class SliderMini {
+    constructor ({container = null, next = null, prev = null, activeClass = '', autoplay = false, animate = false} = {}) {
+        this.container = document.querySelector(container);
+        try{this.slides = this.container.children}catch(e){};
+        this.next = document.querySelector(next);
+        this.prev = document.querySelector(prev);
+        this.activeClass = activeClass;
+        this.autoplay = autoplay;
+        this.animate = animate;
 
-export default class SliderMini extends Slider {
-    constructor (container, next, prev, activeClass, autoplay, animate) {
-        super(container, next, prev, activeClass, autoplay, animate);
         this.timer;
     }
 
@@ -61,18 +66,20 @@ export default class SliderMini extends Slider {
     }
     
     init() {
-        this.container.style.cssText = `
-            display: flex;
-            flex-wrap: wrap;
-            overflow: hidden;
-            align-items: flex-start;
-        `;
-
-        this.bindTriggers();
-        this.decorizeSlides();
-
-        if (this.autoplay) {
-            this.autoplaySlide();
-        }
+        try {
+            this.container.style.cssText = `
+                display: flex;
+                flex-wrap: wrap;
+                overflow: hidden;
+                align-items: flex-start;
+            `;
+    
+            this.bindTriggers();
+            this.decorizeSlides();
+    
+            if (this.autoplay) {
+                this.autoplaySlide();
+            }
+        } catch (error) {}
     }
 }
