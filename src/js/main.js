@@ -6,10 +6,18 @@ import SliderMini from "./modules/slider/slider-mini";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    new MainSlider({slides: '.page > div', next: '.page .next'}).render();
+    new MainSlider({
+        slides: '.page > div', 
+        next: '.page .next'
+    }).render();
 
-    new MainSlider({slides: '.moduleapp > div', next: '.moduleapp .next', prev: '.moduleapp .prev'}).render();
+    new MainSlider({
+        slides: '.moduleapp > div', 
+        next: '.moduleapp .next', 
+        prev: '.moduleapp .prev'
+    }).render();
 
+    
     new SliderMini({
         container: '.showup__content-slider',
         prev: '.showup__prev',
@@ -37,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
 
     new VideoPlayer('.showup .play', '.overlay').play();
+    new VideoPlayer('.module__video-item .play', '.overlay').play();
 
     new Form('form').init();
 })

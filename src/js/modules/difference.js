@@ -7,10 +7,7 @@ export default class Difference {
             this.newItems = this.newOfficer.querySelectorAll(items);
             this.oldCounter = 0;
             this.newCounter = 0;
-            
-        } catch (error) {
-            
-        }
+        } catch (e) {}
     }
 
     hideItems(items) {
@@ -35,14 +32,11 @@ export default class Difference {
 
     init() {
         try {
-            
             this.hideItems(this.oldItems);
             this.hideItems(this.newItems);
     
             this.bringItems(this.oldOfficer, this.oldItems, this.oldCounter);
             this.bringItems(this.newOfficer, this.newItems, this.newCounter);
-        } catch (error) {
-            
-        }
+        } catch (e) {}
     }
 }
