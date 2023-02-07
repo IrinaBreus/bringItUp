@@ -1,4 +1,5 @@
 import Difference from "./modules/difference";
+import Download from "./modules/download";
 import Form from "./modules/form";
 import VideoPlayer from "./modules/playVideo";
 import showInfo from "./modules/showInfo";
@@ -51,4 +52,6 @@ window.addEventListener('DOMContentLoaded', () => {
     new Form('form').init();
 
     new showInfo('.plus').init();
+
+    new Download('.download').init();
 })
