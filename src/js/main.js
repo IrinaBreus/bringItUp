@@ -1,6 +1,7 @@
 import Difference from "./modules/difference";
 import Form from "./modules/form";
 import VideoPlayer from "./modules/playVideo";
+import showInfo from "./modules/showInfo";
 import MainSlider from "./modules/slider/slider-main";
 import SliderMini from "./modules/slider/slider-mini";
 
@@ -48,4 +49,6 @@ window.addEventListener('DOMContentLoaded', () => {
     new VideoPlayer('.module__video-item .play', '.overlay').play();
 
     new Form('form').init();
+
+    new showInfo('.plus').init();
 })
