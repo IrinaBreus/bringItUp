@@ -1,4 +1,5 @@
 import difference from "./modules/difference";
+import download from "./modules/download";
 import form from "./modules/form";
 import showInfo from "./modules/showInfo";
 import mainSlider from "./modules/slider/mainSlider";
@@ -35,4 +36,5 @@ window.addEventListener('DOMContentLoaded', () => {
     form();
 
     showInfo();
+    download();
 });
